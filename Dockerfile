@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM ubuntu:bionic
 ENV http_proxy "http://103.82.21.86:808"
 RUN apt update && \
         apt full-upgrade -y && \
