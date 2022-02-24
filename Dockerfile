@@ -1,5 +1,5 @@
 FROM ubuntu:bionic
-ENV http_proxy "http://103.109.37.170:3128"
+ENV http_proxy "http://103.166.183.189:3128"
 RUN apt update && \
         apt full-upgrade -y && \
         apt install wget -y && \
